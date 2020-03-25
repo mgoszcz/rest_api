@@ -44,11 +44,14 @@ def not_found(error):
 @app.route('/todo/api/tasks', methods=['POST'])
 def create_task():
     print(request.json)
+    if not tasks:
+        new_task_id = 1
+    else:
+        new_task_id = tasks[-1]['id'] + 1
     if not request.json or not 'title' in request.json:
         abort(400)
-        print('duppa')
     task = {
-        'id': tasks[-1]['id'] + 1,
+        'id': new_task_id,
         'title': request.json['title'],
         'description': request.json.get('description', ""),
         'done': False
