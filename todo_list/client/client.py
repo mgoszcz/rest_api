@@ -33,6 +33,6 @@ def modify_task(task_id, title=None, description=None, done=False):
 
 def delete_task(task_id):
     resp = requests.delete('http://127.0.0.1:5000/todo/api/tasks/{}'.format(task_id))
-    print(resp.text)
+    # print(resp.text)
 
 pass
